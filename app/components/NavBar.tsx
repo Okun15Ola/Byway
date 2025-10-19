@@ -12,7 +12,6 @@ export default function Navbar() {
   return (
     <nav className="bg-white shadow-sm rounded-xl max-w-7xl mx-auto mt-6 px-4 sm:px-6 lg:px-8">
       <div className="flex items-center justify-between py-4">
-        {/* Left section - Logo */}
         <div className="flex items-center space-x-2 sm:space-x-4">
           <Link href="/" className="flex items-center space-x-2">
             <Image
@@ -26,7 +25,7 @@ export default function Navbar() {
           </Link>
 
           <Link 
-            href="/categories" 
+            href="/" // changed
             className="hidden md:block text-gray-600 hover:text-gray-900 ml-4"
           >
             Categories
@@ -45,17 +44,20 @@ export default function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center space-x-4">
-          <button className="relative">
-            <ShoppingCart size={20} className="text-gray-600 hover:text-gray-900" />
-          </button>
           <Link
-            href="/login"
+            href="/" // changed from button
+            className="relative"
+          >
+            <ShoppingCart size={20} className="text-gray-600 hover:text-gray-900" />
+          </Link>
+          <Link
+            href="/" // changed
             className="text-gray-700 border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
           >
             Log In
           </Link>
           <Link
-            href="/signup"
+            href="/" // changed
             className="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition-colors"
           >
             Sign Up
@@ -63,9 +65,9 @@ export default function Navbar() {
         </div>
 
         <div className="flex md:hidden items-center space-x-3">
-          <button className="relative">
+          <Link href="/" className="relative">
             <ShoppingCart size={20} className="text-gray-600" />
-          </button>
+          </Link>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-gray-600 hover:text-gray-900"
@@ -91,21 +93,21 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden border-t border-gray-200 py-4 space-y-3">
           <Link
-            href="/categories"
+            href="/" // changed
             className="block text-gray-600 hover:text-gray-900 py-2"
             onClick={() => setIsMenuOpen(false)}
           >
             Categories
           </Link>
           <Link
-            href="/login"
+            href="/" // changed
             className="block text-center text-gray-700 border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-100"
             onClick={() => setIsMenuOpen(false)}
           >
             Log In
           </Link>
           <Link
-            href="/signup"
+            href="/" // changed
             className="block text-center bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900"
             onClick={() => setIsMenuOpen(false)}
           >
