@@ -10,12 +10,12 @@ export default function Navbar() {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <nav className="bg-white/80 backdrop-blur-md shadow-sm border border-gray-100 rounded-2xl max-w-7xl mx-auto mt-6 px-4 sm:px-6 lg:px-8 transition-all duration-300">
-      <div className="flex items-center justify-between py-4">
+    <nav className="fixed top-0 left-0 bg-gray-50 w-full z-50 border-b border-gray-100 px-4 sm:px-6 lg:px-8 transition-all duration-300">
+      <div className="flex items-center justify-between py-4 max-w-7xl mx-auto">
         {/* Logo & Brand */}
         <div className="flex items-center space-x-6">
           <a href="/" className="flex items-center space-x-3 group">
-             <Image
+            <Image
               src="/assets/logo.png"
               alt="Byway logo"
               width={32}
@@ -27,15 +27,25 @@ export default function Navbar() {
             </span>
           </a>
 
-          <a href="/" className="hidden md:flex items-center space-x-2 text-gray-700 hover:text-blue-600 px-4 py-2 rounded-lg hover:bg-gray-50 transition-all duration-200 group">
+          <a
+            href="/"
+            className="hidden md:flex items-center space-x-2 text-gray-700 hover:text-blue-600 px-4 py-2 rounded-lg hover:bg-gray-50 transition-all duration-200 group"
+          >
             <span className="font-medium">Categories</span>
-            <ChevronDown size={16} className="group-hover:translate-y-0.5 transition-transform duration-200" />
+            <ChevronDown
+              size={16}
+              className="group-hover:translate-y-0.5 transition-transform duration-200"
+            />
           </a>
         </div>
 
         {/* Search Bar */}
         <div className="hidden md:flex relative flex-1 max-w-xl mx-8">
-          <div className={`relative w-full transition-all duration-300 ${isFocused ? 'scale-[1.02]' : ''}`}>
+          <div
+            className={`relative w-full transition-all duration-300 ${
+              isFocused ? "scale-[1.02]" : ""
+            }`}
+          >
             <input
               type="text"
               placeholder="Search for courses, skills, or topics..."
@@ -44,24 +54,31 @@ export default function Navbar() {
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
               className={`w-full pl-11 pr-4 py-3 bg-gray-50 border-2 rounded-xl focus:outline-none transition-all duration-300 text-gray-900 placeholder-gray-400
-                ${isFocused 
-                  ? 'border-blue-500 bg-white shadow-lg shadow-blue-100' 
-                  : 'border-transparent hover:bg-gray-100'
+                ${
+                  isFocused
+                    ? "border-blue-500 bg-white shadow-lg shadow-blue-100"
+                    : "border-transparent hover:bg-gray-100"
                 }`}
             />
-            <Search 
+            <Search
               className={`absolute left-3.5 top-3.5 transition-colors duration-300 ${
-                isFocused ? 'text-blue-500' : 'text-gray-400'
-              }`} 
-              size={20} 
+                isFocused ? "text-blue-500" : "text-gray-400"
+              }`}
+              size={20}
             />
           </div>
         </div>
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center space-x-3">
-          <a href="/" className="relative p-2.5 rounded-xl hover:bg-gray-50 transition-all duration-200 group">
-            <ShoppingCart size={22} className="text-gray-600 group-hover:text-blue-600 transition-colors duration-200" />
+          <a
+            href="/"
+            className="relative p-2.5 rounded-xl hover:bg-gray-50 transition-all duration-200 group"
+          >
+            <ShoppingCart
+              size={22}
+              className="text-gray-600 group-hover:text-blue-600 transition-colors duration-200"
+            />
             <span className="absolute -top-1 -right-1 w-5 h-5 bg-blue-600 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg">
               0
             </span>
@@ -105,7 +122,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Search */}
-      <div className="md:hidden pb-4">
+      <div className="md:hidden pb-4 px-4">
         <div className="relative">
           <input
             type="text"
@@ -120,7 +137,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden border-t border-gray-100 py-4 space-y-2 animate-in fade-in slide-in-from-top-4 duration-300">
+        <div className="md:hidden border-t border-gray-100 py-4 space-y-2 animate-in fade-in slide-in-from-top-4 duration-300 px-4">
           <a
             href="/"
             className="flex items-center justify-between text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-4 py-3 rounded-lg transition-all duration-200"
