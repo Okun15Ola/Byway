@@ -74,8 +74,6 @@ export default function SignIn() {
                 Sign In →
               </button>
             </form>
-
-            {/* Divider */}
             <div className="my-6 relative flex items-center">
               <div className="flex-grow border-t border-gray-300"></div>
               <span className="flex-shrink mx-4 text-gray-500 text-sm bg-white px-3">
@@ -84,7 +82,6 @@ export default function SignIn() {
               <div className="flex-grow border-t border-gray-300"></div>
             </div>
 
-            {/* Social Buttons */}
             <div className="flex justify-center gap-3 flex-wrap">
               <button className="flex items-center gap-2 border px-4 py-2 text-gray-700 rounded-lg hover:bg-gray-100 transition text-sm font-medium">
                 <FaFacebook className="text-blue-600" /> Facebook
