@@ -2,6 +2,7 @@
 
 import { FaFacebook, FaGoogle, FaMicrosoft } from "react-icons/fa";
 import Navbar from "@/app/components/NavBar";
+import Link from "next/link";
 
 export default function SignUp() {
   return (
@@ -83,13 +84,15 @@ export default function SignUp() {
                 </div>
               </div>
 
-              {/* Submit Button */}
-              <button
+              <Link href="/dashboard" className="text-blue-600 hover:underline">
+                <button
                 type="submit"
                 className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2.5 rounded-lg font-medium hover:bg-gray-900 transition"
               >
                 Create Account →
               </button>
+              </Link>
+              
             </form>
 
             <div className="my-6 relative flex items-center">
@@ -114,9 +117,9 @@ export default function SignUp() {
 
             <p className="text-center text-gray-500  text-sm mt-6">
               Already have an account?{" "}
-              <a href="/auth/signin" className="text-blue-600 font-medium hover:underline">
+              <Link href="/dashboard" className="text-blue-600 font-medium hover:underline">
                 Sign in
-              </a>
+              </Link>
             </p>
           </div>
         </div>

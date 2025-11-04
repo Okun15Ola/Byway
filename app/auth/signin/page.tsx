@@ -4,6 +4,7 @@
 
 import { FaFacebook, FaGoogle, FaMicrosoft } from "react-icons/fa";
 import Navbar from "@/app/components/NavBar";
+import Link from "next/link";
 
 export default function SignIn() {
   return (
@@ -12,7 +13,6 @@ export default function SignIn() {
       <section className="min-h-screen flex items-center justify-center pb-10 bg-gray-50 px-4 pt-24">
         <div className="bg-white rounded-2xl shadow-lg flex flex-col md:flex-row items-center w-full max-w-5xl overflow-hidden">
           
-          {/* Left Image */}
           <div className="w-full md:w-1/2 h-56 md:h-full">
             <img
               src="/assets/signup.png"
@@ -21,7 +21,6 @@ export default function SignIn() {
             />
           </div>
 
-          {/* Right Section */}
           <div className="md:w-1/2 p-10 flex flex-col justify-center">
             <h2 className="text-2xl font-bold text-gray-900 text-center mb-1">
               Welcome Back 👋
@@ -30,7 +29,6 @@ export default function SignIn() {
               Log in to continue your learning journey
             </p>
 
-            {/* Sign In Form */}
             <form className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -66,13 +64,15 @@ export default function SignIn() {
                   Forgot password?
                 </a>
               </div>
-
-              <button
+              <Link href="/dashboard" className="text-blue-600 hover:underline">
+                <button
                 type="submit"
                 className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2.5 rounded-lg font-medium hover:bg-gray-900 transition"
               >
                 Sign In →
               </button>
+              </Link>
+              
             </form>
             <div className="my-6 relative flex items-center">
               <div className="flex-grow border-t border-gray-300"></div>

@@ -17,7 +17,7 @@ export default function InstructorSection() {
               We provide the tools and skills to teach what you love.
             </p>
             <Link
-              href="#"
+              href="/dashboard"
               className="inline-flex items-center gap-2 bg-gray-900 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
             >
               Start Your Instructor Journey

@@ -2,28 +2,37 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { FiMenu, FiX, FiHome, FiMessageSquare, FiSettings, FiLogOut } from 'react-icons/fi'
-import { FaUserCircle } from "react-icons/fa";
+import { usePathname, useRouter } from 'next/navigation'
+import { FiMenu, FiX, FiHome, FiMessageSquare, FiSettings } from 'react-icons/fi'
+import { FaUserCircle } from "react-icons/fa"
 import { PiStudentBold } from "react-icons/pi"
 import Image from 'next/image'
 
 const SideBar = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
 
   const toggleMobileSidebar = () => setIsMobileOpen(!isMobileOpen)
 
+  // ✅ Close sidebar and go to dashboard when any link is clicked (on mobile)
+  const handleNavClick = () => {
+    if (window.innerWidth < 768) { // only on mobile screens
+      setIsMobileOpen(false)
+      router.push('/dashboard')
+    }
+  }
+
   const links = [
     { name: 'Dashboard', href: '/dashboard', icon: <FiHome size={24} /> },
-    { name: 'Courses', href: '/courses', icon: <PiStudentBold size={24} /> },
-    { name: 'Communication', href: '/communication', icon: <FiMessageSquare size={24} /> },
-    { name: 'Revenue', href: '/revenue', icon: <FiMessageSquare size={24} /> },
-    { name: 'Settings', href: '/settings', icon: <FiSettings size={24} /> },
+    { name: 'Courses', href: '#', icon: <PiStudentBold size={24} /> },
+    { name: 'Communication', href: '#', icon: <FiMessageSquare size={24} /> },
+    { name: 'Revenue', href: '#', icon: <FiMessageSquare size={24} /> },
+    { name: 'Settings', href: '#', icon: <FiSettings size={24} /> },
   ]
 
   return (
-    <div className="flex">
+    <>
       {isMobileOpen && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-50 z-20 md:hidden"
@@ -33,9 +42,9 @@ const SideBar = () => {
 
       <div
         className={`
-          fixed md:relative
+          fixed md:sticky md:top-0
           ${isMobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
-          w-64 md:w-64
+          w-64
           bg-gray-900 text-white h-screen p-5 pt-8
           z-30 transition-transform duration-300
         `}
@@ -47,7 +56,7 @@ const SideBar = () => {
           <FiX size={24} />
         </button>
 
-        <Link href="/" className="flex items-center space-x-3 group">
+        <Link href="/dashboard" className="flex items-center space-x-3 group">
           <Image
             src="/assets/logo.png"
             alt="Byway logo"
@@ -60,12 +69,12 @@ const SideBar = () => {
           </span>
         </Link>
 
-        <ul className="pt-8">
+        <ul className="pt-8 space-y-2">
           {links.map((link) => (
-            <li key={link.name} className="mb-4">
-              <Link
-                href={link.href}
-                className={`flex items-center gap-x-4 p-2 rounded-lg text-gray-300 hover:bg-gray-700 duration-200 ${
+            <li key={link.name}>
+              <button
+                onClick={handleNavClick}
+                className={`flex items-center gap-x-4 p-3 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors duration-200 w-full text-left ${
                   pathname === link.href ? 'bg-gray-700 text-white' : ''
                 }`}
               >
@@ -73,15 +82,15 @@ const SideBar = () => {
                 <span className="text-sm font-medium">
                   {link.name}
                 </span>
-              </Link>
+              </button>
             </li>
           ))}
         </ul>
 
-        <div className="absolute bottom-6 w-full pr-5">
+        <div className="absolute bottom-6 left-5 right-5">
           <Link
             href="/profile"
-            className="flex items-center gap-x-3 p-2 rounded-lg text-gray-300 hover:bg-gray-700 w-full duration-200"
+            className="flex items-center gap-x-3 p-3 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors duration-200"
           >
             <FaUserCircle size={26} className="text-gray-400" />
             <span className="text-sm font-medium">
@@ -92,19 +101,12 @@ const SideBar = () => {
       </div>
 
       <button
-        className="fixed bottom-4 right-4 z-40 bg-gray-900 text-white p-3 rounded-full shadow-lg md:hidden"
+        className="fixed bottom-4 right-4 z-40 bg-gray-900 text-white p-3 rounded-full shadow-lg md:hidden hover:bg-gray-800 transition-colors"
         onClick={toggleMobileSidebar}
       >
         <FiMenu size={24} />
       </button>
-
-      <div className="flex-1 p-6 md:ml-64">
-        <h2 className="text-2xl font-semibold mb-4">Byway dashboard Content</h2>
-        <p className="text-gray-700">
-          This is where my Byway dashboard content will go.
-        </p>
-      </div>
-    </div>
+    </>
   )
 }
 
